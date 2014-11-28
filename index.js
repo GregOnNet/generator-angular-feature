@@ -13,10 +13,10 @@ mkdirp(feature, handleCreationError);
 exec('git checkout -b feature/' + feature);
 
 // creating angular-module
-fs.writeFile(feature + '/' + feature + 'module.js', 'module', handleCreationError);
+fs.writeFile(feature + '/' + feature + '.module.js', 'module', handleCreationError);
 
 // creating route configuration of module
-fs.writeFile(feature + '/' + feature + 'routes.js', 'routes', handleCreationError);
+fs.writeFile(feature + '/' + feature + '.routes.js', 'routes', handleCreationError);
 
 // creating controller of module
 fs.writeFile(feature + '/' + feature + '.js', 'controller', handleCreationError);
