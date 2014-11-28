@@ -1,0 +1,19 @@
+{
+  "name": "generator-angular-feature",
+  "version": "0.0.1",
+  "description": "Creates a directory for a new angular feature declaring the module, routes and controller",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "feature",
+    "style-guide"
+  ],
+  "author": "Gregor Woiwode <gregor.woiwode@gmail.com> (http://github.com/gregonnet)",
+  "license": "MIT",
+  "dependencies": {
+    "mkdirp": "^0.5.0"
+  }
+}
