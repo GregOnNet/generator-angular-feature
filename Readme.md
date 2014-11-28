@@ -8,3 +8,7 @@
 
 - Branch of feature already exists
   - it should fail
+
+- Missing git repository
+  - warning
+  - should not create a branch
