@@ -3,7 +3,10 @@
 var fs      = require ('fs'),
     path    = require('path'),
     mkdirp  = require('mkdirp'),
+    branch  = require('nodegit').Branch,
     feature = process.argv[2];
+
+    console.log(branch);
 
 // creating feature root directory
 mkdirp(feature, handleCreationError);
@@ -18,7 +21,7 @@ fs.writeFile(feature + '/' + feature + 'routes.js', 'routes', handleCreationErro
 fs.writeFile(feature + '/' + feature + '.js', 'controller', handleCreationError);
 
 // creating html template of module
-fs.writeFile(feature + '/' + feature + 'html', 'template', handleCreationError);
+fs.writeFile(feature + '/' + feature + '.html', 'template', handleCreationError);
 
 function handleCreationError(error) {
   if (error) console.log(error);
