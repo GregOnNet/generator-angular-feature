@@ -1,15 +1,16 @@
 'use strict';
 
-var fs      = require ('fs'),
+var exec    = require('child_process').exec,
+    fs      = require('fs'),
     path    = require('path'),
     mkdirp  = require('mkdirp'),
-    branch  = require('nodegit').Branch,
     feature = process.argv[2];
-
-    console.log(branch);
 
 // creating feature root directory
 mkdirp(feature, handleCreationError);
+
+// creating feauter branch
+exec('git checkout -b feature/' + feature);
 
 // creating angular-module
 fs.writeFile(feature + '/' + feature + 'module.js', 'module', handleCreationError);
