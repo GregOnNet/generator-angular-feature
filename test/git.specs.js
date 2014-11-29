@@ -71,7 +71,7 @@ describe('Creating branches', function() {
     var featureName = 'user-dashboard';
 
     after(function() {
-
+      exec('git checkout master')
       exec('git branch -d feature/' + featureName);
     });
 
