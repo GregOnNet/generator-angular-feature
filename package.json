@@ -21,6 +21,7 @@
   "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-mocha": "^2.0.0",
+    "rimraf": "^2.2.8",
     "should": "^4.3.0"
   }
 }
