@@ -20,10 +20,22 @@ describe('Git handle branching', function() {
       process.chdir(projectDir);
     });
 
-    it('should not create a branch', function() {
+    it('should return false', function() {
+
       git.isRepo(function(isRepo) {
 
         isRepo.should.be.false;
+      });
+    });
+  });
+
+  describe('If a git repository is initialized', function() {
+
+    it('should return true', function() {
+
+      git.isRepo(function(isRepo) {
+
+        isRepo.should.be.true;
       });
     });
   });
