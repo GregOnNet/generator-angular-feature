@@ -29,4 +29,14 @@ describe('Checking command line argument for name of feature', function() {
       feature.parse(argv).should.eql('feature-a');
     });
   });
+
+  describe('If the feature name contains "spaces"', function() {
+
+    var argv = ['_', 'app-path/', 'f e a t u r e-a'];
+
+    it('should delete them', function() {
+
+      feature.parse(argv).should.eql('feature-a');
+    });
+  })
 });
