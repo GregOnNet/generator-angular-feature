@@ -1,6 +1,7 @@
 'use strict';
 
 var git    = require('../lib/git'),
+    exec = require('child_process').exec;
     should = require('should');
 
 describe('Git handle branching', function() {
@@ -47,7 +48,7 @@ describe('Listing branches', function() {
 
     it('should return an array of local branches', function() {
 
-      git.branch(function(branches) {
+      git.branch('', function(branches) {
 
         branches.length.should.equal(1);
       });
@@ -55,9 +56,31 @@ describe('Listing branches', function() {
 
     it('should contain the branch "master"', function() {
 
-      git.branch(function(branches) {
+      git.branch('', function(branches) {
 
-        branches[0].should.equal('master');
+        branches.should.containEql('master');
+      });
+    });
+  });
+});
+
+describe('Creating branches', function() {
+
+  describe('When a feature branch is created', function() {
+
+    var featureName = 'user-dashboard';
+
+    after(function() {
+
+      exec('git branch -d feature/' + featureName);
+    });
+
+    it('should be listed in the list of branches', function(done) {
+
+      git.branch(featureName, function(branches) {
+
+        branches.should.containEql('feature/' + featureName);
+        done();
       });
     });
   });
