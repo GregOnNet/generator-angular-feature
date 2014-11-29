@@ -1,7 +1,9 @@
 'use strict';
 
-var feature = require('../lib/feature');
-var should = require('should');
+var feature = require('../lib/feature'),
+    should  = require('should'),
+    rimraf  = require('rimraf'),
+    mkdirp  = require('mkdirp');
 
 describe('Checking command line argument for name of feature', function() {
 
@@ -11,12 +13,10 @@ describe('Checking command line argument for name of feature', function() {
 
     it('should throw an error', function() {
 
-      (function() {
+      feature.parse(argv, function(error, result) {
 
-        feature.parse(argv);
-      })
-        .should
-        .throw('Please specify a valid name for your feature!')
+        should(error).Error;
+      });
     });
   });
 
@@ -26,7 +26,10 @@ describe('Checking command line argument for name of feature', function() {
 
     it('should return the name of the parsed feature name', function() {
 
-      feature.parse(argv).should.eql('feature-a');
+      feature.parse(argv, function(error, result) {
+
+        result.should.eql('feature-a');
+      });
     });
   });
 
@@ -36,7 +39,38 @@ describe('Checking command line argument for name of feature', function() {
 
     it('should delete them', function() {
 
-      feature.parse(argv).should.eql('feature-a');
+      feature.parse(argv, function(error, result) {
+
+        result.should.eql('feature-a');
+      });
+    });
+  });
+});
+
+
+describe('Check for existing feature with the same name', function() {
+  var featureName = 'user-dashboard';
+
+  before(function() {
+
+    mkdirp(featureName);
+  });
+
+  after(function() {
+
+    rimraf(featureName, function() {});
+  });
+
+  describe('If a directory with the given feature name already exists', function() {
+
+    var argv = ['_', 'app-path/', featureName];
+
+    it('should throw an error', function() {
+
+      feature.parse(argv, function(error, result) {
+
+        should(error).Error;
+      });
     });
   })
 });
