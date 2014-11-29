@@ -40,3 +40,24 @@ describe('Git handle branching', function() {
     });
   });
 });
+
+describe('Listing branches', function() {
+
+  describe('Listing branches of a repository', function() {
+
+    it('should return an array of local branches', function() {
+
+      git.branch(function(branches) {
+
+        branches.length.should.be.above(1);
+      });
+    });
+
+    it('should contain the branch "master"', function() {
+      git.branch(function(branches) {
+
+        branches[0].should.eql('master');
+      });
+    });
+  });
+});
