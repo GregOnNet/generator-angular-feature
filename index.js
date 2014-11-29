@@ -1,28 +1,34 @@
 'use strict';
 
-var exec    = require('child_process').exec,
+var git     = require('./lib/git'),
+    feature = require('./lib/feature'),
     fs      = require('fs'),
     path    = require('path'),
-    mkdirp  = require('mkdirp'),
-    feature = process.argv[2];
+    mkdirp  = require('mkdirp');
 
-// creating feature root directory
-mkdirp(feature, handleCreationError);
+feature.parse(process.argv, completed);
 
-// creating feauter branch
-exec('git checkout -b feature/' + feature);
+function completed(error, name) {
+  if (error) throw(error);
 
-// creating angular-module
-fs.writeFile(feature + '/' + feature + '.module.js', 'module', handleCreationError);
+  git.branch(name, function() {
 
-// creating route configuration of module
-fs.writeFile(feature + '/' + feature + '.routes.js', 'routes', handleCreationError);
+    // creating feature root directory
+    mkdirp(name, handleCreationError);
 
-// creating controller of module
-fs.writeFile(feature + '/' + feature + '.js', 'controller', handleCreationError);
+    // creating angular-module
+    fs.writeFile(name + '/' + name + '.module.js', 'module', handleCreationError);
 
-// creating html template of module
-fs.writeFile(feature + '/' + feature + '.html', 'template', handleCreationError);
+    // creating route configuration of module
+    fs.writeFile(name + '/' + name + '.routes.js', 'routes', handleCreationError);
+
+    // creating controller of module
+    fs.writeFile(name + '/' + name + '.js', 'controller', handleCreationError);
+
+    // creating html template of module
+    fs.writeFile(name + '/' + name + '.html', 'template', handleCreationError);
+  });
+}
 
 function handleCreationError(error) {
   if (error) console.log(error);
