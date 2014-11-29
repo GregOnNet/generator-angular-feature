@@ -49,14 +49,15 @@ describe('Listing branches', function() {
 
       git.branch(function(branches) {
 
-        branches.length.should.be.above(1);
+        branches.length.should.equal(1);
       });
     });
 
     it('should contain the branch "master"', function() {
+
       git.branch(function(branches) {
 
-        branches[0].should.eql('master');
+        branches[0].should.equal('master');
       });
     });
   });
