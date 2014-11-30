@@ -1,14 +1,32 @@
-## ToDo - Tests
+# generator-angular-feature
 
-- Missing name of feature
-  - it should fail
+This generator creates a directory and the most common files needed to develop a
+new feature for an angular app.
 
-- Direcetory of feature already exists
-  - it should fail
+## Directory structure
 
-- Branch of feature already exists
-  - it should fail
+```
+├──  feature/
+│   ├──  feature.module.js  // to define module dependencies
+│   ├──  feature.routes.js  // to define the routes
+│   ├──  feature.js         // the controller
+│   └──  feature.html       // the template
+```
 
-- Missing git repository
-  - warning
-  - should not create a branch
+## Comes with git
+
+If a `git repository` is detected a new branch will be created and checked out:
+
+```
+feature/[name_of_feature]
+```
+
+## Usage
+
+```
+node index.js name_of_feature
+```
+
+## Further information
+
+This generator is inspired by [John Papa's](https://twitter.com/John_Papa) [AngularJS Style Guide](https://github.com/johnpapa/angularjs-styleguide).
