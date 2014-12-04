@@ -50,7 +50,7 @@ describe('Checking command line argument for name of feature', function() {
 
 describe('Cecking command line argument for name of the app', function() {
 
-  describe('If no app name is given', function() {
+  describe('If no "." is given separating app name and feature name', function() {
 
     var argv = ['path', '_', 'no-dot-separated-app-feature-combination'];
 
