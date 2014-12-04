@@ -62,6 +62,19 @@ describe('Cecking command line argument for name of the app', function() {
       });
     });
   });
+
+  describe('If no app name is given', function() {
+
+    var argv = ['path', '_', '.missing-app-name'];
+
+    it('should throw an error', function() {
+
+      feature.parse(argv, function(error, result) {
+
+        error.message.should.eql('Please specify a valid app name');
+      });
+    });
+  });
 });
 
 describe('Check for existing feature with the same name', function() {
