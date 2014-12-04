@@ -15,14 +15,14 @@ describe('Checking command line argument for name of feature', function() {
 
       feature.parse(argv, function(error, result) {
 
-        should(error).Error;
+        error.message.should.eql('Please specify a valid name for your feature!');
       });
     });
   });
 
   describe('If a valid feature name is given', function() {
 
-    var argv = ['_', 'app-path/', 'feature-a'];
+    var argv = ['_', 'app-path/', '.feature-a'];
 
     it('should return the name of the parsed feature name', function() {
 
@@ -35,7 +35,7 @@ describe('Checking command line argument for name of feature', function() {
 
   describe('If the feature name contains "spaces"', function() {
 
-    var argv = ['_', 'app-path/', 'f e a t u r e-a'];
+    var argv = ['_', 'app-path/', '.f e a t u r e-a'];
 
     it('should delete them', function() {
 
@@ -65,7 +65,7 @@ describe('Cecking command line argument for name of the app', function() {
 });
 
 describe('Check for existing feature with the same name', function() {
-  var featureName = 'user-dashboard';
+  var featureName = '.user-dashboard';
 
   before(function() {
 
