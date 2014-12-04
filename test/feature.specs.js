@@ -69,7 +69,7 @@ describe('Check for existing feature with the same name', function() {
 
       feature.parse(argv, function(error, result) {
 
-        should(error).Error;
+        error.message.should.eql('This feature already exists.');
       });
     });
   })
