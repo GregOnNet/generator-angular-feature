@@ -58,7 +58,7 @@ describe('Cecking command line argument for name of the app', function() {
 
       feature.parse(argv, function(error, result) {
 
-        error.message.should.eql('Please specify a valid app name');
+        error.message.should.eql('Please provide the app- and feature-name separated by ".": app.feature');
       });
     });
   });
