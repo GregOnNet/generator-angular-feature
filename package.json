@@ -12,6 +12,10 @@
     "style-guide"
   ],
   "author": "Gregor Woiwode <gregor.woiwode@gmail.com> (http://github.com/gregonnet)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/GregOnNet/generator-angular-feature.git"
+  },
   "license": "MIT",
   "dependencies": {
     "handlebars": "^2.0.0",
