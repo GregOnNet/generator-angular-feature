@@ -1,4 +1,4 @@
-# generator-angular-feature
+# generator-angular-feature [![Build Status](https://travis-ci.org/GregOnNet/generator-angular-feature.svg?branch=master)](https://travis-ci.org/GregOnNet/generator-angular-feature)
 
 This generator creates a directory and the most common files needed to develop a
 new feature for an angular app.
