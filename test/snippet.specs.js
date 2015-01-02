@@ -6,6 +6,17 @@ var fs         = require('fs'),
 
 describe('Loading snippet templates', function() {
 
+  describe('Reading the snippets directory', function(){
+
+    it('should return a list of all snippet files', function() {
+
+      fs.readdir('snippets', function(error, files) {
+
+        files.length.should.eql(4);
+      });
+    });
+  });
+
   describe('When loading a snippet file', function() {
 
     var featureName = { 'feature' : 'login' };
