@@ -6,7 +6,7 @@ new feature for an angular app.
 ## Usage
 
 ```
-node index.js name_of_feature
+node index.js [app].[feature]
 ```
 
 ## Directory structure
