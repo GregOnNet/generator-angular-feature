@@ -19,9 +19,10 @@ describe('Loading snippet templates', function() {
 
   describe('When loading a snippet file', function() {
 
-    var featureName = { 'feature' : 'login' };
-    var options = { encoding: 'utf-8' };
-    var template, result;
+    var featureName = { 'feature' : 'login' },
+        options     = { encoding: 'utf-8' },
+        template,
+        result;
 
     it('should return its content', function() {
 
