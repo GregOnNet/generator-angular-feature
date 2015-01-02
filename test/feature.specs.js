@@ -28,7 +28,15 @@ describe('Checking command line argument for name of feature', function() {
 
       feature.parse(argv, function(error, result) {
 
-        result.should.eql('app.feature-a');
+        result.feature.should.eql('feature-a');
+      });
+    });
+
+    it('should return the name of the parsed appp name', function() {
+
+      feature.parse(argv, function(error, result) {
+
+        result.name.should.eql('app');
       });
     });
   });
@@ -41,7 +49,7 @@ describe('Checking command line argument for name of feature', function() {
 
       feature.parse(argv, function(error, result) {
 
-        result.should.eql('app.feature-a');
+        result.feature.should.eql('feature-a');
       });
     });
   });
