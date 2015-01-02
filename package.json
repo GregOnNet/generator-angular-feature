@@ -17,6 +17,9 @@
     "url": "git://github.com/GregOnNet/generator-angular-feature.git"
   },
   "license": "MIT",
+  "scripts": {
+    "test" : "gulp"
+  },
   "dependencies": {
     "handlebars": "^2.0.0",
     "mkdirp": "^0.5.0"
