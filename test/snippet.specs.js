@@ -17,7 +17,7 @@ describe('Loading snippet templates', function() {
     });
   });
 
-  describe('When loading a snippet file', function() {
+  describe('When compiling a snippet file', function() {
 
     var app       = { name : 'gregs-app', feature : 'login' },
         options   = { encoding: 'utf-8' },
