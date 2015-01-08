@@ -2,7 +2,8 @@
 
 var fs         = require('fs'),
     should     = require('should'),
-    Handlebars = require('handlebars');
+    Handlebars = require('handlebars'),
+    snippet    = require('../lib/snippet');
 
 describe('Loading snippet templates', function() {
 
@@ -13,6 +14,25 @@ describe('Loading snippet templates', function() {
       fs.readdir('snippets', function(error, files) {
 
         files.length.should.eql(4);
+      });
+    });
+  });
+
+  describe('When loading a snippet', function() {
+
+    it('should return the name of the snippet', function() {
+
+      snippet.load('snippets/feature.js', function(error, snippet) {
+
+        snippet.name.should.eql('feature.js');
+      });
+    });
+
+    it('should return the content of the snippet', function() {
+
+      snippet.load('snippets/feature.js', function(error, snippet) {
+
+        snippet.content.should.containEql('.controller(\'{{ feature }}\', {{ feature }});');
       });
     });
   });
