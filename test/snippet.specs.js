@@ -19,21 +19,32 @@ describe('Loading snippet templates', function() {
 
   describe('When loading a snippet file', function() {
 
-    var featureName = { 'feature' : 'login' },
-        options     = { encoding: 'utf-8' },
+    var app       = { name : 'gregs-app', feature : 'login' },
+        options   = { encoding: 'utf-8' },
         template,
         result;
 
-    it('should return its content', function() {
+    before(function(done) {
 
       fs.readFile('snippets/feature.js', options, function(error, data) {
         if (error) throw error;
 
         template = Handlebars.compile(data);
-        result   = template(featureName);
+        result   = template(app);
+
+        done();
+      });
+
+    });
+
+    it('should replace {{ feature }} with the given feature name', function() {
 
         result.should.containEql('login');
-      });
+    });
+
+    it('should replace {{ name }} with the given app name', function() {
+
+        result.should.containEql('gregs-app');
     });
   });
 });

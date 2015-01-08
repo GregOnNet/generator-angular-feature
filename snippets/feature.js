@@ -1,13 +1,11 @@
 (function() {
   'use strict';
 
-
   angular
-    .module('{{ feature }}')
+    .module('{{ name }}')
     .controller('{{ feature }}', {{ feature }});
 
-
   function {{ feature }}() {
-    
+
   }
 }());
