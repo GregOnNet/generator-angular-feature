@@ -46,10 +46,10 @@ describe('Loading snippet templates', function() {
 
     before(function(done) {
 
-      fs.readFile('snippets/feature.js', options, function(error, data) {
+      snippet.load('snippets/feature.js', function(error, snippet) {
         if (error) throw error;
 
-        template = Handlebars.compile(data);
+        template = Handlebars.compile(snippet.content);
         result   = template(app);
 
         done();
