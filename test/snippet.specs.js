@@ -69,4 +69,12 @@ describe('Loading snippet templates', function() {
       result.name.should.eql('login.js');
     });
   });
+
+  describe('When writing a snippet file', function() {
+
+    it('should be placed in a directory named like the feature', function() {
+
+      
+    })
+  });
 });
