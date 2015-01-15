@@ -2,7 +2,6 @@
 
 var fs         = require('fs'),
     should     = require('should'),
-    Handlebars = require('handlebars'),
     snippet    = require('../lib/snippet');
 
 describe('Loading snippet templates', function() {
@@ -41,16 +40,14 @@ describe('Loading snippet templates', function() {
 
     var app       = { name : 'gregs-app', feature : 'login' },
         options   = { encoding: 'utf-8' },
-        template,
         result;
 
     before(function(done) {
 
-      snippet.load('snippets/feature.js', function(error, snippet) {
+      snippet.load('snippets/feature.js', function(error, s) {
         if (error) throw error;
 
-        template = Handlebars.compile(snippet.content);
-        result   = template(app);
+        result = snippet.compile(s, app);
 
         done();
       });
