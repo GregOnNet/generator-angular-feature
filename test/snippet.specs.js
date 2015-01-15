@@ -56,12 +56,17 @@ describe('Loading snippet templates', function() {
 
     it('should replace {{ feature }} with the given feature name', function() {
 
-        result.should.containEql('login');
+      result.content.should.containEql('login');
     });
 
     it('should replace {{ name }} with the given app name', function() {
 
-        result.should.containEql('gregs-app');
+      result.content.should.containEql('gregs-app');
+    });
+
+    it('should replace "feature" with the name of the feature', function() {
+
+      result.name.should.eql('login.js');
     });
   });
 });
