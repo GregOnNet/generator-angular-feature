@@ -2,7 +2,7 @@
 
 var fs         = require('fs'),
     should     = require('should'),
-    snippet    = require('../lib/snippet');
+    snippet    = require('../src/lib/snippet');
 
 describe('Loading snippet templates', function() {
 
@@ -10,7 +10,7 @@ describe('Loading snippet templates', function() {
 
     it('should return a list of all snippet files', function() {
 
-      fs.readdir('snippets', function(error, files) {
+      fs.readdir('src/snippets', function(error, files) {
 
         files.length.should.eql(4);
       });
@@ -21,7 +21,7 @@ describe('Loading snippet templates', function() {
 
     it('should return the name of the snippet', function() {
 
-      snippet.load('snippets/feature.js', function(error, snippet) {
+      snippet.load('src/snippets/feature.js', function(error, snippet) {
 
         snippet.name.should.eql('feature.js');
       });
@@ -29,7 +29,7 @@ describe('Loading snippet templates', function() {
 
     it('should return the content of the snippet', function() {
 
-      snippet.load('snippets/feature.js', function(error, snippet) {
+      snippet.load('src/snippets/feature.js', function(error, snippet) {
 
         snippet.content.should.containEql('.controller(\'{{ feature }}\', {{ feature }});');
       });
@@ -44,7 +44,7 @@ describe('Loading snippet templates', function() {
 
     before(function(done) {
 
-      snippet.load('snippets/feature.js', function(error, s) {
+      snippet.load('src/snippets/feature.js', function(error, s) {
         if (error) throw error;
 
         result = snippet.compile(s, app);
@@ -74,7 +74,7 @@ describe('Loading snippet templates', function() {
 
     it('should be placed in a directory named like the feature', function() {
 
-      
+
     })
   });
 });

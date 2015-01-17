@@ -1,6 +1,6 @@
 'use strict';
 
-var git    = require('../lib/git'),
+var git    = require('../src/lib/git'),
     exec = require('child_process').exec;
     should = require('should');
 

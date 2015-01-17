@@ -1,6 +1,6 @@
 'use strict';
 
-var feature = require('../lib/feature'),
+var feature = require('../src/lib/feature'),
     should  = require('should'),
     rimraf  = require('rimraf'),
     mkdirp  = require('mkdirp');
