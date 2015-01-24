@@ -1,8 +1,9 @@
 'use strict';
 
-var fs         = require('fs'),
-    should     = require('should'),
-    snippet    = require('../src/lib/snippet');
+var fs      = require('fs'),
+    should  = require('should'),
+    rimraf  = require('rimraf'),
+    snippet = require('../src/lib/snippet');
 
 describe('Loading snippet templates', function() {
 
@@ -72,9 +73,38 @@ describe('Loading snippet templates', function() {
 
   describe('When writing a snippet file', function() {
 
+    var app       = { name : 'gregs-app', feature : 'login' },
+    options   = { encoding: 'utf-8' },
+    result;
+
+    before(function(done) {
+
+      snippet.load('src/snippets/feature.js', function(error, s) {
+        if (error) throw error;
+
+        result = snippet.compile(s, app);
+
+        fs.mkdir(app.feature, function() {
+
+          done();
+        });
+      });
+    });
+
+    after(function(done) {
+
+      rimraf(app.feature, function() {
+
+        done()
+      });
+    });
+
     it('should be placed in a directory named like the feature', function() {
 
+      fs.exists(app.feature, function(exists) {
 
-    })
+        exists.should.be.true;
+      });
+    });
   });
 });
