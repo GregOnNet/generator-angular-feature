@@ -8,7 +8,8 @@ var fs      = require('fs'),
 module.exports = {
 
   load    : load,
-  compile : compile
+  compile : compile,
+  save    : save
 };
 
 function load(filePath, callback) {
@@ -37,4 +38,12 @@ function compile(snippet, app) {
     name    : snippet.name.replace('feature', app.feature),
     content : template(app)
   }
+}
+
+function save(snippet, app, callback) {
+
+  fs.mkdir(app.feature, function(error) {
+
+    callback(error);
+  });
 }

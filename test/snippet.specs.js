@@ -83,8 +83,9 @@ describe('Loading snippet templates', function() {
         if (error) throw error;
 
         result = snippet.compile(s, app);
-
-        fs.mkdir(app.feature, function() {
+        
+        snippet.save(result, app, function(error) {
+          if (error) throw error;
 
           done();
         });
