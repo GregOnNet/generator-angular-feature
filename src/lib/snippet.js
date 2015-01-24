@@ -44,6 +44,15 @@ function save(snippet, app, callback) {
 
   fs.mkdir(app.feature, function(error) {
 
-    callback(error);
+    if(error) {
+      callback(error);
+      return;
+    }
+
+    fs.writeFile(app.feature + '/' + snippet.name, snippet.content, function (error) {
+
+      callback(error);
+    });
+
   });
 }

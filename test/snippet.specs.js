@@ -83,7 +83,7 @@ describe('Loading snippet templates', function() {
         if (error) throw error;
 
         result = snippet.compile(s, app);
-        
+
         snippet.save(result, app, function(error) {
           if (error) throw error;
 
@@ -103,6 +103,14 @@ describe('Loading snippet templates', function() {
     it('should be placed in a directory named like the feature', function() {
 
       fs.exists(app.feature, function(exists) {
+
+        exists.should.be.true;
+      });
+    });
+
+    it('should be saved as file with the given feature name', function() {
+
+      fs.exists(app.feature + '/' + result.name, function(exists) {
 
         exists.should.be.true;
       });
