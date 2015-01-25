@@ -1,12 +1,13 @@
 {
   "globals": {
-    "jasmine": false,
+    "jasmine": true,
     "spyOn": false,
-    "it": false,
-    "console": false,
-    "describe": false,
+    "require" :true,
+    "it": true,
+    "console": true,
+    "describe": true,
     "expect": false,
-    "beforeEach": false,
+    "beforeEach": true,
     "waits": false,
     "waitsFor": false,
     "runs": false
@@ -37,5 +38,5 @@
   "sub": true,
   "strict": false,
   "white": true,
-  "unused": true
+  "unused": true,
 }
