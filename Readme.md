@@ -3,6 +3,8 @@
 This generator creates a directory and the most common files needed to develop a
 new feature for an angular app.
 
+This generator is inspired by [John Papa's](https://twitter.com/John_Papa) [AngularJS Style Guide](https://github.com/johnpapa/angularjs-styleguide).
+
 ## Usage
 
 ```
@@ -31,10 +33,6 @@ feature/[name_of_feature]
 
 The generator uses `.js-files` containing placeholders for the name of the feature.
 [Handlebars.js](https://github.com/wycats/handlebars.js) is used to compile these snippets.
-
-## Further information
-
-This generator is inspired by [John Papa's](https://twitter.com/John_Papa) [AngularJS Style Guide](https://github.com/johnpapa/angularjs-styleguide).
 
 ## feature.js
 
