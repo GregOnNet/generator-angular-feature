@@ -42,17 +42,28 @@ function compile(snippet, app) {
 
 function save(snippet, app, callback) {
 
-  fs.mkdir(app.feature, function(error) {
+  fs.exists(app.feature, function(exists) {
 
-    if(error) {
-      callback(error);
-      return;
-    }
+    if (exists)
+      writeSnippet(snippet, app, callback);
 
-    fs.writeFile(app.feature + '/' + snippet.name, snippet.content, function (error) {
+    else
+      fs.mkdir(app.feature, function(error) {
 
-      callback(error);
-    });
+        if(error) {
+          callback(error);
+          return;
+        }
 
+        writeSnippet(snippet, app, callback);
+      });
+  });
+}
+
+function writeSnippet(snippet, app, callback) {
+
+  fs.writeFile(app.feature + '/' + snippet.name, snippet.content, function (error) {
+
+    callback(error);
   });
 }

@@ -116,4 +116,52 @@ describe('Loading snippet templates', function() {
       });
     });
   });
+
+  describe('With existing directory: When writing a snippet file', function() {
+
+    var app       = { name : 'gregs-app', feature : 'login' },
+    options   = { encoding: 'utf-8' },
+    result;
+
+    before(function(done) {
+
+      snippet.load('src/snippets/feature.js', function(error, s) {
+        if (error) throw error;
+
+        result = snippet.compile(s, app);
+
+        snippet.save(result, app, function(error) {
+          if (error) throw error;
+
+          snippet.load('src/snippets/feature.module.js', function(error, s) {
+            if (error) throw error;
+
+            result = snippet.compile(s, app);
+
+            snippet.save(result, app, function(error) {
+              if (error) throw error;
+
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    after(function(done) {
+
+      rimraf(app.feature, function() {
+
+        done()
+      });
+    });
+
+    it('should be saved as file with the given feature name', function() {
+
+      fs.exists(app.feature + '/' + result.name, function(exists) {
+
+        exists.should.be.true;
+      });
+    });
+  });
 });
