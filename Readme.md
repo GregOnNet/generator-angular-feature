@@ -36,12 +36,16 @@ The generator uses `.js-files` containing placeholders for the name of the featu
 
 This generator is inspired by [John Papa's](https://twitter.com/John_Papa) [AngularJS Style Guide](https://github.com/johnpapa/angularjs-styleguide).
 
-### lib/
-
-#### feature.js
+## feature.js
 
 feature.js provides a method `parse`. This method takes one parameter specifying the name of the app and the name of the feature seperated by a dot (`app.feature`).
 The parameter will be parsed and you receive an object containing two fields.
+
+| function                   | further information      | callback                     |
+|--------------------------------------------------------------------------------------|
+| `parse(argv, callback)`    | argv = console arguments | function(error, **app**) { } |
+
+### app
 
 ```javascript
 {
