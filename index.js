@@ -1,35 +1,33 @@
 'use strict';
 
-var git     = require('./lib/git'),
-    feature = require('./lib/feature'),
+var git     = require('./src/lib/git'),
+    feature = require('./src/lib/feature'),
+    snippet = require('./src/lib/snippet'),
     fs      = require('fs'),
     path    = require('path'),
     mkdirp  = require('mkdirp');
 
 feature.parse(process.argv, completed);
 
-function completed(error, name) {
+function completed(error, app) {
   if (error) throw(error);
 
-  git.branch(name, function() {
+  git.branch('feature/' + app.featureName, function() {
 
-    // creating feature root directory
-    mkdirp(name, handleCreationError);
+    fs.readdir('src/snippets', function(error, files) {
 
-    // creating angular-module
-    fs.writeFile(name + '/' + name + '.module.js', 'module', handleCreationError);
+      files.forEach(function(file) {
 
-    // creating route configuration of module
-    fs.writeFile(name + '/' + name + '.routes.js', 'routes', handleCreationError);
+        snippet.load('src/snippets/' + file, function(error, s) {
+          if (error) throw error;
 
-    // creating controller of module
-    fs.writeFile(name + '/' + name + '.js', 'controller', handleCreationError);
+          var result = snippet.compile(s, app);
 
-    // creating html template of module
-    fs.writeFile(name + '/' + name + '.html', 'template', handleCreationError);
+          snippet.save(result, app, function(error) {
+            if (error) throw error;
+          });
+        });
+      });
+    });
   });
-}
-
-function handleCreationError(error) {
-  if (error) console.log(error);
 }
