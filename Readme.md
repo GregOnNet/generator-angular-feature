@@ -42,7 +42,7 @@ feature.js provides a method `parse`. This method takes one parameter specifying
 The parameter will be parsed and you receive an object containing two fields.
 
 | function                   | further information      | callback                     |
-|--------------------------------------------------------------------------------------|
+|----------------------------|--------------------------|------------------------------|
 | `parse(argv, callback)`    | argv = console arguments | function(error, **app**) { } |
 
 ### app
